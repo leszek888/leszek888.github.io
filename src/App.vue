@@ -4,10 +4,7 @@
       <span :class="$style.logo">nBudget</span>
     </div>
     <div :class="$style.mainContent">
-      <h1>Content</h1>
-      <h1>Content</h1>
-      <h1>Content</h1>
-      <h1>Content</h1>
+      <BalanceSheet />
     </div>
     <div :class="$style.mainFooter">
       &copy; 2022 Leszek Nowicki
@@ -20,6 +17,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import BalanceSheet from './components/reports/BalanceSheet.vue'
 
 const appReady = ref(false)
 
@@ -32,7 +30,7 @@ setTimeout(() => {
 .main {
   &Container {
     animation: expand;
-    animation-duration: 0.6s;
+    animation-duration: .6s;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -70,7 +68,7 @@ setTimeout(() => {
 
   &Header {
     animation: scroll-to-top;
-    animation-duration: 0.5s;
+    animation-duration: .6s;
     padding: 1rem;
     position: fixed;
     top: 0;
@@ -88,7 +86,8 @@ setTimeout(() => {
    &Content {
      flex: 1;
      margin: auto 0;
-     padding-top: 80px;
+     padding: 1rem;
+     padding-top: 100px;
      width: 100%;
    }
 }
