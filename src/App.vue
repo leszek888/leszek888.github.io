@@ -1,18 +1,20 @@
 <template>
-  <div :class="$style.mainContainer" v-if="appReady">
-    <div :class="$style.mainHeader">
+  <div :class="$style.mainContainer">
+    <div :class="[
+      $style.mainHeader,
+      appReady && $style.mainHeaderReady
+      ]">
       <span :class="$style.logo">nBudget</span>
+      <span v-if="!appReady" class="loader"/>
     </div>
-    <div :class="$style.mainContent">
-      <BalanceSheet />
+    <div :class="$style.mainBody" v-if="appReady">
+      <div :class="$style.mainContent">
+        <BalanceSheet />
+      </div>
+      <div :class="$style.mainFooter">
+        &copy; 2022 Leszek Nowicki
+      </div>
     </div>
-    <div :class="$style.mainFooter">
-      &copy; 2022 Leszek Nowicki
-    </div>
-  </div>
-  <div v-else :class="$style.mainLoader">
-    <span :class="$style.logo">nBudget</span>
-    <span class="loader"/>
   </div>
 </template>
 
@@ -30,46 +32,44 @@ setTimeout(() => {
 <style lang="scss" module>
 .main {
   &Container {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &Body {
+    align-items: center;
     animation: expand;
     animation-duration: .6s;
-    align-items: center;
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100%;
-    margin: 0 auto;
-    position: relative;
-    text-align: center;
   }
 
-  &Loader, &Header {
+  &Header {
+    align-items: center;
     background-color: #79c;
     color: #fff;
+    display: flex;
     height: 80px;
+    justify-content: center;
     margin: auto 0;
     position: fixed;
     top: calc(50% - 70px);
-    transition: 1s;
+    transition: .6s;
     width: 100%;
-  }
-
-  &Loader {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   &Footer {
     background-color: #555;
     color: #ddd;
     padding: 2rem;
+    text-align: center;
     width: 100%;
   }
 
-  &Header {
-    animation: scroll-to-top;
-    animation-duration: .6s;
+  &HeaderReady {
     padding: 1rem;
     position: fixed;
     top: 0;
@@ -91,11 +91,6 @@ setTimeout(() => {
   font-weight: 700;
   font-size: 30pt;
   position: absolute;
-}
-
-@keyframes scroll-to-top {
-  from { top: calc(50% - 70px); }
-  to { top: 0; }
 }
 
 @keyframes expand {
