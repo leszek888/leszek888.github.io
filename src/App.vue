@@ -11,6 +11,7 @@
     </div>
   </div>
   <div v-else :class="$style.mainLoader">
+    <span :class="$style.logo">nBudget</span>
     <span class="loader"/>
   </div>
 </template>
@@ -72,15 +73,6 @@ setTimeout(() => {
     padding: 1rem;
     position: fixed;
     top: 0;
-    
-    .logo {
-      bottom: 20px;
-      cursor: pointer;
-      left: 20px;
-      font-weight: 700;
-      font-size: 30pt;
-      position: absolute;
-    }
   }
 
    &Content {
@@ -90,6 +82,15 @@ setTimeout(() => {
      padding-top: 100px;
      width: 100%;
    }
+}
+
+.logo {
+  bottom: 20px;
+  cursor: pointer;
+  left: 20px;
+  font-weight: 700;
+  font-size: 30pt;
+  position: absolute;
 }
 
 @keyframes scroll-to-top {
