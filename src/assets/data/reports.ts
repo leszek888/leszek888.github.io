@@ -2,16 +2,23 @@ export const BALANCE_SHEET = {
   assets: {
     label: 'Aktywa',
     values: [
-      { currency: 'EUR', value: 42312.33 }
+      { currency: 'EUR', value: 42312.33 },
+      { currency: 'PLN', value: 1250.3 }
     ],
     sub_accounts: [
       {
         label: 'Obrotowe',
-        values: [ { currency: 'EUR', value: 12312.33 } ],
+        values: [
+          { currency: 'EUR', value: 12312.33 },
+          { currency: 'PLN', value: 1250.3 }
+        ],
         sub_accounts: [
           {
             label: 'Bank',
-            values: [{ currency: 'EUR', value: 11302.30 } ]
+            values: [
+              { currency: 'EUR', value: 11302.30 },
+              { currency: 'PLN', value: 1250.3 }
+            ]
           },
           {
             label: 'Gotówka',
@@ -35,16 +42,23 @@ export const BALANCE_SHEET = {
   equity_and_liabilities: {
     label: 'Pasywa',
     values: [
-      { currency: 'EUR', value: 42312.33 }
+      { currency: 'EUR', value: 42312.33 },
+      { currency: 'PLN', value: 1250.3 }
     ],
     sub_accounts: [
       {
         label: 'Kapitał',
-        values: [{ currency: 'EUR', value: 42312.33  }],
+        values: [
+          { currency: 'EUR', value: 42312.33 },
+          { currency: 'PLN', value: 1250.3 }
+        ],
         sub_accounts: [
           {
             label: 'Otwarcie',
-            values: [{ currency: 'EUR', value: 42312.33 }]
+            values: [
+              { currency: 'EUR', value: 42312.33 },
+              { currency: 'PLN', value: 1250.3 }
+            ],
           }
         ]
       }

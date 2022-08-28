@@ -1,24 +1,20 @@
 <template>
   <h2>Balance Sheet</h2>
-  <hr />
   <div :class="$style.tableContainer">
-    <div :class="$style.table">
-      <div :class="$style.leftHeader">
-        <span :class="$style.label">Aktywa</span>
-        <span :class="$style.amount">32 123,44 PLN</span>
-      </div>
-    </div>
-    <div :class="$style.table">
-      <div :class="$style.rightHeader">
-        <span :class="$style.amount">32 123,44 PLN</span>
-        <span :class="$style.label">Pasywa</span>
-      </div>
-    </div>
+    <ReportTable :table="data.assets" />
+    <ReportTable
+      reversed
+      :table="data.equity_and_liabilities"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import { BALANCE_SHEET } from '../../assets/data/reports'
+import ReportTable from './ReportTable.vue'
+
+const data = ref(BALANCE_SHEET)
 </script>
 
 <style lang="scss" module>
@@ -26,6 +22,10 @@ import { BALANCE_SHEET } from '../../assets/data/reports'
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 100%;
+
+  > :first-child {
+    border-right: solid 1px #bbb;
+  }
 
   .table {
     .leftHeader {
