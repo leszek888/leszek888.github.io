@@ -5,10 +5,20 @@
     ]">
     <span :class="$style.logo">nBudget</span>
     <span v-if="!props.appReady" class="loader"/>
+    <div :class="$style.routes" v-else>
+      <RouterLink :active-class="$style.activeRoute" :to="route.path" v-for="route in routes">
+        {{ route.name }}
+      </RouterLink>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { reactive } from 'vue'
+import { MainRoutes } from '../router/routes'
+
+const routes = reactive(MainRoutes)
+
 const props = defineProps<{
   appReady: boolean
 }>()
@@ -37,10 +47,21 @@ const props = defineProps<{
       font-size: 30pt;
       position: absolute;
     }
+
+    .routes {
+      align-self: flex-end;
+
+      a {
+        color: white;
+      }
+
+      .activeRoute {
+        font-weight: 600;
+      }
+    }
   }
 
   &HeaderReady {
-    padding: 1rem;
     position: fixed;
     top: 0;
   }

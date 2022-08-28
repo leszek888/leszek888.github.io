@@ -15,6 +15,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+import MainHeader from './components/MainHeader.vue'
 
 const { isReady } = useRouter()
 
