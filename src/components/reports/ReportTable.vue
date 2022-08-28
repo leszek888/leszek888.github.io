@@ -3,13 +3,13 @@
     <div :class="$style.header">
       <div>{{ props.table.label }}</div>
       <div :class="$style.values">
-        <div v-for="value in table.values">
+        <div v-for="value in props.table.values">
           {{ $filters.currency(value.value) }} {{ value.currency }}
         </div>
       </div>
     </div>
     <ReportTableRow
-      v-for="account in table.sub_accounts"
+      v-for="account in props.table.sub_accounts"
       :account="account"
     />
   </div>

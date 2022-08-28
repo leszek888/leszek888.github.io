@@ -8,15 +8,15 @@
   >
     <div>{{ account.label }}</div>
     <div :class="$style.values">
-      <div v-for="value in account.values">
+      <div v-for="value in props.account.values">
         <div>{{ $filters.currency(value.value) }} {{ value.currency }}</div>
       </div>
     </div>
   </div>
   <div :class="$style.subaccounts" v-if="expanded">
     <ReportTableRow
-      v-for="account in account.sub_accounts"
-      :account="account"
+      v-for="subAccount in props.account.sub_accounts"
+      :account="subAccount"
     />
   </div>
 </template>
