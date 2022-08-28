@@ -9,7 +9,7 @@
     </div>
     <div :class="$style.mainBody" v-if="appReady">
       <div :class="$style.mainContent">
-        <BalanceSheet />
+        <RouterView />
       </div>
       <div :class="$style.mainFooter">
         &copy; 2022 Leszek Nowicki
@@ -20,13 +20,13 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import BalanceSheet from './components/reports/BalanceSheet.vue'
+import { useRouter } from 'vue-router'
+
+const { isReady } = useRouter()
 
 const appReady = ref(false)
 
-setTimeout(() => {
-  appReady.value = true
-}, 2000)
+isReady().then(() => appReady.value = true)
 </script>
 
 <style lang="scss" module>

@@ -1,8 +1,9 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
+import Router from './router'
 
-const app = createApp(App)
+const app = createApp(App).use(Router)
 
 app.config.globalProperties.$filters = {
   currency: (value: number) => {
