@@ -1,12 +1,6 @@
 <template>
   <div :class="$style.mainContainer">
-    <div :class="[
-      $style.mainHeader,
-      appReady && $style.mainHeaderReady
-      ]">
-      <span :class="$style.logo">nBudget</span>
-      <span v-if="!appReady" class="loader"/>
-    </div>
+    <MainHeader :app-ready="appReady" />
     <div :class="$style.mainBody" v-if="appReady">
       <div :class="$style.mainContent">
         <RouterView />
@@ -47,32 +41,12 @@ isReady().then(() => appReady.value = true)
     width: 100%;
   }
 
-  &Header {
-    align-items: center;
-    background-color: #79c;
-    color: #fff;
-    display: flex;
-    height: 80px;
-    justify-content: center;
-    margin: auto 0;
-    position: fixed;
-    top: calc(50% - 70px);
-    transition: .6s;
-    width: 100%;
-  }
-
   &Footer {
     background-color: #555;
     color: #ddd;
     padding: 2rem;
     text-align: center;
     width: 100%;
-  }
-
-  &HeaderReady {
-    padding: 1rem;
-    position: fixed;
-    top: 0;
   }
 
    &Content {
@@ -82,15 +56,6 @@ isReady().then(() => appReady.value = true)
      padding-top: 100px;
      width: 100%;
    }
-}
-
-.logo {
-  bottom: 20px;
-  cursor: pointer;
-  left: 20px;
-  font-weight: 700;
-  font-size: 30pt;
-  position: absolute;
 }
 
 @keyframes expand {
